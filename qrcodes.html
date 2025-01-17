@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Router</title>
+</head>
+<body>
+  
+</body>
+<script>
+  const locationMap = {};
+  function addLocation(key, value) {
+    locationMap[key] = value;
+  }
+
+  window.onload = function () {
+    // Add locations here
+    addLocation('bunkeringoffice', 'https://maps.app.goo.gl/suy5pdVRbw6xTD7a9');
+    addLocation('takoradizonaloffice', 'https://maps.app.goo.gl/9tRj5eF34mfdivJ48');
+
+
+    // Redirect to location
+    const urlParams = new URLSearchParams(window.location.search);
+    const location = urlParams.get('location');
+    if (location && locationMap[location]) {
+      window.location.href = locationMap[location];
+    }
+  };
+</script>
+</html>
